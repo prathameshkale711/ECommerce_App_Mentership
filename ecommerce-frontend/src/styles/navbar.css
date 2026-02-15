@@ -1,0 +1,41 @@
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 40px;
+  background:rgba(15,23,42,0.9);
+  backdrop-filter:blur(12px);
+  color:white;
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+
+.navbar h2{
+  font-size:26px;
+  font-weight:700;
+  cursor:pointer;
+  color: aliceblue;
+}
+
+.navbar span{
+  margin-left:25px;
+  cursor:pointer;
+  font-weight:500;
+  position:relative;
+}
+
+.navbar span::after{
+  content:"";
+  position:absolute;
+  width:0;
+  height:2px;
+  background:#6366f1;
+  left:0;
+  bottom:-4px;
+  transition:0.3s;
+}
+
+.navbar span:hover::after{
+  width:100%;
+}

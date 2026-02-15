@@ -1,0 +1,28 @@
+:root{
+  --primary:#6366f1;
+  --secondary:#22c55e;
+  --danger:#ef4444;
+  --dark:#0f172a;
+  --light:#f8fafc;
+  --glass:rgba(255,255,255,0.7);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#e0e7ff,#f8fafc);
+  min-height:100vh;
+}
+
+.page{
+  padding:40px;
+}
+
+h1,h2{
+  color:#0f172a;
+}
