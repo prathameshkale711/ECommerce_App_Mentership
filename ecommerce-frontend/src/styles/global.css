@@ -26,3 +26,12 @@ body{
 h1,h2{
   color:#0f172a;
 }
+.input {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ccc;
+}
+
+.input::placeholder {
+  color: #666;
+}
