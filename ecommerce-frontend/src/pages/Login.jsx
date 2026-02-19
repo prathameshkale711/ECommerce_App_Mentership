@@ -8,33 +8,34 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async () => {
-    try {
-      const res = await fetch("http://localhost:5000/api/auth/login", {
+ const handleLogin = async () => {
+  try {
+    const res = await fetch(
+      `${process.env.REACT_APP_API_URL}/api/auth/login`,
+      {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
-      });
-
-      const data = await res.json();
-
-      if (data.token) {
-        localStorage.setItem("token", data.token);
-        localStorage.setItem("role", data.role);
-
-        if (data.role === "admin") navigate("/admin");
-        else navigate("/products");
-
-      } else {
-        alert(data);
       }
-    } catch (err) {
-      console.log(err);
-      alert("Server error");
+    );
+
+    const data = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.role);
+
+      if (data.role === "admin") navigate("/admin");
+      else navigate("/products");
+    } else {
+      alert(data.message || "Login failed");
     }
-  };
+  } catch (err) {
+    console.log(err);
+    alert("Server error");
+  }
+};
+
 
   return (
     <div className="login-container">

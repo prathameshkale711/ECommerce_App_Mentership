@@ -42,7 +42,8 @@ export default function Home(){
       
               {item.image ? (
                 <img
-                  src={`http://localhost:5000/uploads/${item.image}`}
+              src={`${process.env.REACT_APP_API_URL}/uploads/${item.image}`}
+
                   alt={item.name}
                   style={{
                     height:"180px",

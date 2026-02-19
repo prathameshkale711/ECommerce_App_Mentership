@@ -128,7 +128,9 @@ export default function Admin() {
         {products.map((p) => (
           <div key={p._id} className="cart-box">
             <img
-              src={`http://localhost:5000/uploads/${p.image}`}
+              src={`${process.env.REACT_APP_API_URL}/uploads/${p.image}`}
+
+
               style={{ height: "60px" }}
               alt=""
             />

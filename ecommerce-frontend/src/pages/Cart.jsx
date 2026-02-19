@@ -64,7 +64,8 @@ export default function Cart(){
     <div className="cart-left">
       {item.productId?.image && (
         <img
-         src={`http://localhost:5000/uploads/${item.productId.image}`}
+        src={`${process.env.REACT_APP_API_URL}/uploads/${item.productId.image}`}
+
           alt=""
           className="cart-image"
         />

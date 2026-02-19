@@ -42,7 +42,8 @@ export default function Checkout() {
 
               {item.productId?.image && (
                 <img
-                  src={`http://localhost:5000/uploads/${item.productId.image}`}
+                  src={`${process.env.REACT_APP_API_URL}/uploads/${item.productId.image}`}
+
                   alt=""
                   style={{
                     height:"80px",
