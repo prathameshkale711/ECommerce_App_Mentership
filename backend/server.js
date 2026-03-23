@@ -14,8 +14,14 @@ import returnRoutes from "./routes/returnRoutes.js";
 dotenv.config();
 
 const app = express();
-
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://ecommerce-frontend.vercel.app" // 👈 tuzha frontend URL asel tar
+  ],
+  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
 app.use(express.json());
 
 
@@ -23,7 +29,9 @@ app.use("/uploads", express.static("uploads"));
 
 mongoose.connect(process.env.MONGO_URI)
   .then(()=>console.log("MongoDB Connected"))
+  
   .catch(err=>console.log(err));
+  console.log("JWT_SECRET:", process.env.JWT_SECRET);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
