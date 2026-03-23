@@ -19,11 +19,9 @@ app.use(cors({
     "http://localhost:3000",
     "https://e-commerce-app-mentership.vercel.app"
   ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
-app.options("*", cors());
+
 app.use(express.json());
 
 
