@@ -17,10 +17,11 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://ecommerce-frontend.vercel.app" 
+    "https://e-commerce-app-mentership.vercel.app"
   ],
-  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
 }));
 app.use(express.json());
 
