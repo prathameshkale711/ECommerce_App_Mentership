@@ -1,23 +1,27 @@
 import express from "express";
 const router = express.Router();
+
 import Cart from "../models/Cart.js";
 import authMiddleware from "../middleware/authMiddleware.js";
 
 
-//  Get Cart
+// GET CART
 router.get("/", authMiddleware, async (req,res)=>{
   try{
+
     const cart = await Cart.find({ userId:req.user.id })
       .populate("productId");
 
     res.json(cart);
+
   }catch(error){
+    console.log(error);
     res.status(500).json({message:"Server error"});
   }
 });
 
 
-//  Add To Cart
+// ADD TO CART
 router.post("/add", authMiddleware, async (req,res)=>{
   try{
 
@@ -43,42 +47,7 @@ router.post("/add", authMiddleware, async (req,res)=>{
     res.json(item);
 
   }catch(error){
-    res.status(500).json({message:"Server error"});
-  }
-});
-
-
-//  Update Quantity
-router.put("/:id", authMiddleware, async (req,res)=>{
-  try{
-
-    const {quantity} = req.body;
-
-    if(quantity < 1){
-      return res.status(400).json({message:"Minimum quantity 1"});
-    }
-
-    const updated = await Cart.findByIdAndUpdate(
-      req.params.id,
-      {quantity},
-      {new:true}
-    );
-
-    res.json(updated);
-
-  }catch(error){
     console.log(error);
-    res.status(500).json({message:"Server error"});
-  }
-});
-
-
-//  Remove Item
-router.delete("/:id", authMiddleware, async (req,res)=>{
-  try{
-    await Cart.findByIdAndDelete(req.params.id);
-    res.json({message:"Removed"});
-  }catch(error){
     res.status(500).json({message:"Server error"});
   }
 });
