@@ -17,7 +17,7 @@ const app = express();
 app.use(cors({
   origin: [
     "http://localhost:3000",
-    "https://ecommerce-frontend.vercel.app" // 👈 tuzha frontend URL asel tar
+    "https://ecommerce-frontend.vercel.app" //  tuzha frontend URL asel tar
   ],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"],
